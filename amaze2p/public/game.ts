@@ -223,6 +223,10 @@ const showCountdown = (seconds: number) => {
   countdownOverlay.textContent = String(seconds)
 }
 
+const hideCountdown = () => {
+  countdownOverlay?.classList.remove('show')
+}
+
 const showWin = (winnerId: string) => {
   if (!winOverlay || !winMessage || !currentGame) return
   const winner = currentGame.players.find(player => player.clientId === winnerId)
