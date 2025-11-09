@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AmAze 2P</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="menu-screen" class="screen active">
+        <h1>AmAze 2P</h1>
+        <p id="connection-status" data-status="connecting">Connecting…</p>
+
+        <div class="card">
+          <label class="field">
+            <span>Your name</span>
+            <input id="player-name" type="text" placeholder="Enter your name" maxlength="32" />
+          </label>
+
+          <button id="create-lobby" class="primary">Create Lobby</button>
+        </div>
+
+        <form id="join-form" class="card">
+          <label class="field">
+            <span>Join lobby</span>
+            <input id="join-code" type="text" inputmode="numeric" placeholder="1234" maxlength="4" />
+          </label>
+          <button type="submit" class="secondary">Join Lobby</button>
+        </form>
+      </section>
+
+      <section id="lobby-screen" class="screen">
+        <div class="lobby-header">
+          <h2>Lobby</h2>
+          <div class="lobby-code">
+            Code:
+            <span id="lobby-code">----</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Players</h3>
+          <ul id="player-list" class="player-list"></ul>
+          <p id="lobby-status" class="lobby-status"></p>
+        </div>
+
+        <div class="card controls">
+          <label class="field">
+            <span>Maze size</span>
+            <select id="maze-size">
+              <option value="10">10 × 10</option>
+              <option value="20">20 × 20</option>
+              <option value="30">30 × 30</option>
+              <option value="40">40 × 40</option>
+              <option value="50">50 × 50</option>
+            </select>
+          </label>
+
+          <button id="start-game" class="primary">Start Game</button>
+        </div>
+
+        <div id="accept-modal" class="modal">
+          <div class="modal-content">
+            <h3>Ready to race?</h3>
+            <p>The lobby leader wants to start a match.</p>
+            <div class="modal-actions">
+              <button id="accept-game" class="primary">Let's go</button>
+              <button id="decline-game" class="secondary">Not yet</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="game-screen" class="screen">
+        <div id="game-canvas" class="game-canvas"></div>
+        <div id="countdown-overlay" class="overlay countdown"></div>
+        <div id="win-overlay" class="overlay win">
+          <div class="overlay-content">
+            <p id="win-message"></p>
+            <button id="restart-game" class="primary">Play Again</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js@8.4.1/dist/pixi.min.js"></script>
+    <script type="module" src="./client.ts"></script>
+  </body>
+</html>
